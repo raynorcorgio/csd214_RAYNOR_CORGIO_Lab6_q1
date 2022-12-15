@@ -38,6 +38,44 @@ public class Main {
                 System.out.println(CdEntity.getCdName() + " " + CdEntity.getBandName());
             }
 
+            // demonstrate editing of an entity
+            em.getTransaction().begin();
+            cd.setCdName("The Dark Side of the Moon (Edited)");
+            em.getTransaction().commit();
+
+
+            listOfCds = em.createQuery("SELECT c FROM cd c").getResultList();
+            System.out.println("\n------------------\nList of CD\n------------------");
+            for (cd CdEntity : listOfCds) {
+                System.out.println(CdEntity.getCdName() + " " + CdEntity.getBandName());
+            }
+
+            // demonstrate deleting of an entity
+            em.getTransaction().begin();
+            em.remove(cd);
+            em.getTransaction().commit();
+
+            listOfCds = em.createQuery("SELECT c FROM cd c").getResultList();
+            System.out.println("\n------------------\nList of CD\n------------------");
+            for (cd CdEntity : listOfCds) {
+                System.out.println(CdEntity.getCdName() + " " + CdEntity.getBandName());
+            }
+
+            // demonstrate adding a new entity
+            em.getTransaction().begin();
+            cd = new cd();
+            cd.setCdName("The Dark Side of the Moon (New)");
+            cd.setBandName("Pink Floyd");
+            em.persist(cd);
+            em.getTransaction().commit();
+
+            listOfCds = em.createQuery("SELECT c FROM cd c").getResultList();
+            System.out.println("\n------------------\nList of CD\n------------------");
+            for (cd CdEntity : listOfCds) {
+                System.out.println(CdEntity.getCdName() + " " + CdEntity.getBandName());
+            }
+
+
         }catch(Exception e){
             Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, e);
         }finally{
