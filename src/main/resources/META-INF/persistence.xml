@@ -9,6 +9,12 @@
         <provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
 <!--        <exclude-unlisted-classes>true</exclude-unlisted-classes>-->
         <class>org.example.entities.cd</class>
+        <class>org.q2.entities.Book</class>
+        <class>org.q2.entities.CashTill</class>
+        <class>org.q2.entities.DiscMag</class>
+        <class>org.q2.entities.Magazine</class>
+        <class>org.q2.entities.Publication</class>
+        <class>org.q2.entities.Ticket</class>
 
         <properties>
             <property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/csd211testdb?zeroDateTimeBehavior=CONVERT_TO_NULL"/>
